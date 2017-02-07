@@ -5,7 +5,7 @@
 Name: grantleetheme
 # This used to live in kdepim
 Epoch:		3
-Version:	16.12.1
+Version:	16.12.2
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -61,6 +61,7 @@ cd ../
 
 %files
 %{_sysconfdir}/xdg/grantleetheme.categories
+%{_sysconfdir}/xdg/grantleetheme.renamecategories
 
 %files -n %{libname}
 %{_libdir}/libKF5GrantleeTheme.so.%{major}*
