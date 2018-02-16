@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   grantleetheme-17.12.1.tar.xz: 6102c1dacc0b4523249cc53ff5606f2a9dfff2f8
+sources:
+  grantleetheme-17.12.2.tar.xz: d265c6cb8ec11e635d050036d82986cf07698d63
