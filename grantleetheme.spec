@@ -26,6 +26,7 @@ BuildRequires: sasl-devel
 BuildRequires: cmake(KF5AkonadiSearch)
 BuildRequires: cmake(KF5Mime)
 BuildRequires: cmake(KF5NewStuff)
+BuildRequires: cmake(KF5IconThemes)
 BuildRequires: cmake(Grantlee5)
 
 %description
