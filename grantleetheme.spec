@@ -5,7 +5,7 @@
 Name: grantleetheme
 # This used to live in kdepim
 Epoch:		3
-Version:	19.11.90
+Version:	19.12.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -13,7 +13,7 @@ Version:	19.11.90
 %define ftpdir stable
 %endif
 Release:	1
-Source0: http://download.kde.org/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Summary: KDE library for PIM handling
 URL: http://kde.org/
 License: GPL
@@ -49,8 +49,7 @@ Requires: %{libname} = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 %cmake_kde5
