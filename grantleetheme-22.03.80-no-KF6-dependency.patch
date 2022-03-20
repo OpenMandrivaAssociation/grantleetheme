@@ -1,0 +1,14 @@
+diff -up grantleetheme-22.03.80/KF5GrantleeThemeConfig.cmake.in.omv~ grantleetheme-22.03.80/KF5GrantleeThemeConfig.cmake.in
+--- grantleetheme-22.03.80/KF5GrantleeThemeConfig.cmake.in.omv~	2022-03-20 16:24:57.890755819 +0100
++++ grantleetheme-22.03.80/KF5GrantleeThemeConfig.cmake.in	2022-03-20 16:25:17.862397817 +0100
+@@ -1,10 +1,6 @@
+ @PACKAGE_INIT@
+ 
+ include(CMakeFindDependencyMacro)
+-if (QT_MAJOR_VERSION STREQUAL "5")
+     find_dependency(Grantlee5 @GRANTLEE_VERSION@)
+-else()
+-    find_dependency(KF6TextTemplate @KF5_MIN_VERSION@)
+-endif()
+ 
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5GrantleeThemeTargets.cmake")

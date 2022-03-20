@@ -14,6 +14,7 @@ Version:	22.03.80
 %endif
 Release:	1
 Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Patch0: grantleetheme-22.03.80-no-KF6-dependency.patch
 Summary: KDE library for PIM handling
 URL: http://kde.org/
 License: GPL
