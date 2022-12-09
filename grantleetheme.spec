@@ -1,11 +1,12 @@
 %define major 5
 %define libname %mklibname KF5GrantleeTheme %{major}
 %define devname %mklibname KF5GrantleeTheme -d
+%define __requires_exclude .*cmake.*KF6.*
 
 Name: grantleetheme
 # This used to live in kdepim
 Epoch:		3
-Version:	22.08.3
+Version:	22.12.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -14,7 +15,6 @@ Version:	22.08.3
 %endif
 Release:	1
 Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch0: grantleetheme-22.03.80-no-KF6-dependency.patch
 Summary: KDE library for PIM handling
 URL: http://kde.org/
 License: GPL
