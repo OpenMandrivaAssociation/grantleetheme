@@ -1,19 +1,21 @@
 %define major 5
-%define libname %mklibname KF5GrantleeTheme %{major}
-%define devname %mklibname KF5GrantleeTheme -d
+%define oldlibname %mklibname KF5GrantleeTheme 5
+%define olddevname %mklibname KF5GrantleeTheme -d
+%define libname %mklibname KPim5GrantleeTheme
+%define devname %mklibname KPim5GrantleeTheme -d
 %define __requires_exclude .*cmake.*KF6.*
 
 Name: grantleetheme
 # This used to live in kdepim
 Epoch:		3
-Version:	22.12.3
+Version:	23.03.90
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Release:	2
+Release:	1
 Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Summary: KDE library for PIM handling
 URL: http://kde.org/
@@ -37,6 +39,7 @@ KDE library for PIM handling
 Summary: KDE library for PIM handling
 Group: System/Libraries
 Requires: %{name} = %{EVRD}
+%rename %{oldlibname}
 
 %description -n %{libname}
 KDE library for PIM handling
@@ -45,6 +48,7 @@ KDE library for PIM handling
 Summary: Development files for %{name}
 Group: Development/C
 Requires: %{libname} = %{EVRD}
+%rename %{olddevname}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
@@ -66,7 +70,7 @@ cd ../
 %{_datadir}/qlogging-categories5/grantleetheme.renamecategories
 
 %files -n %{libname}
-%{_libdir}/libKF5GrantleeTheme.so.%{major}*
+%{_libdir}/libKPim5GrantleeTheme.so.%{major}*
 %{_libdir}/grantlee/*/kde_grantlee_plugin.so
 
 %files -n %{devname}
