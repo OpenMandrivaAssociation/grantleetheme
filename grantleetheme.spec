@@ -26,7 +26,7 @@ BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5Test)
 BuildRequires: cmake(Qt5Qml)
 BuildRequires: sasl-devel
-BuildRequires: cmake(KF5AkonadiSearch)
+BuildRequires: cmake(KPim5AkonadiSearch)
 BuildRequires: cmake(KF5Mime)
 BuildRequires: cmake(KF5NewStuff)
 BuildRequires: cmake(KF5IconThemes)
