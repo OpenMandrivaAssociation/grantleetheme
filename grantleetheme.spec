@@ -31,6 +31,8 @@ BuildRequires: cmake(KF5Mime)
 BuildRequires: cmake(KF5NewStuff)
 BuildRequires: cmake(KF5IconThemes)
 BuildRequires: cmake(Grantlee5)
+BuildRequires: doxygen
+BuildRequires: qt5-assistant
 
 %description
 KDE library for PIM handling
