@@ -1,18 +1,25 @@
+%define git 20240217
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define major 6
 %define libname %mklibname KPim6GrantleeTheme
 %define devname %mklibname KPim6GrantleeTheme -d
 %define __requires_exclude .*cmake.*KF6.*
 
 Name: plasma6-grantleetheme
-Version:	24.01.95
+Version:	24.01.96
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Release:	1
+Release:	%{?git:0.%{git}.}1
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/pim/grantleetheme/-/archive/%{gitbranch}/grantleetheme-%{gitbranchd}.tar.bz2#/grantleetheme-20240217.tar.bz2
+%else
 Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/grantleetheme-%{version}.tar.xz
+%endif
 Summary: KDE library for PIM handling
 URL: http://kde.org/
 License: GPL
@@ -51,7 +58,7 @@ Requires: %{libname} = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%autosetup -p1 -n grantleetheme-%{version}
+%autosetup -p1 -n grantleetheme-%{?git:%{gitbranchd}}%{!?git:%{version}}
 
 %build
 %cmake \
