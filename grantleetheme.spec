@@ -4,10 +4,9 @@
 %define major 6
 %define libname %mklibname KPim6GrantleeTheme
 %define devname %mklibname KPim6GrantleeTheme -d
-%define __requires_exclude .*cmake.*KF6.*
 
-Name: plasma6-grantleetheme
-Version:	25.04.0
+Name:		grantleetheme
+Version:	25.04.1
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -37,6 +36,10 @@ BuildRequires: cmake(KF6IconThemes)
 BuildRequires: cmake(KF6TextTemplate)
 BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
+# Renamed after 6.0 2025-05-25
+%rename plasma6-grantleetheme
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 KDE library for PIM handling
@@ -45,6 +48,9 @@ KDE library for PIM handling
 Summary: KDE library for PIM handling
 Group: System/Libraries
 Requires: %{name} = %{EVRD}
+# Not a 1:1 replacement, but we need to get rid of old cruft...
+Obsoletes: %{mklibname KF5GrantleeTheme 5}
+Obsoletes: %{mklibname KPim5GrantleeTheme}
 
 %description -n %{libname}
 KDE library for PIM handling
@@ -53,25 +59,14 @@ KDE library for PIM handling
 Summary: Development files for %{name}
 Group: Development/C
 Requires: %{libname} = %{EVRD}
+# Not a 1:1 replacement, but we need to get rid of old cruft...
+Obsoletes: %{mklibname -d KF5GrantleeTheme}
+Obsoletes: %{mklibname -d KPim5GrantleeTheme}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
-%prep
-%autosetup -p1 -n grantleetheme-%{?git:%{gitbranchd}}%{!?git:%{version}}
-
-%build
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-cd ../
-%ninja -C build
-
-%install
-%ninja_install -C build
-%find_lang libgrantleetheme6
-
-%files -f libgrantleetheme6.lang
+%files -f %{name}.lang
 %{_datadir}/qlogging-categories6/grantleetheme.categories
 %{_datadir}/qlogging-categories6/grantleetheme.renamecategories
 
