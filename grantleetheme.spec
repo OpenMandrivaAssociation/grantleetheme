@@ -6,7 +6,7 @@
 %define devname %mklibname KPim6GrantleeTheme -d
 
 Name:		grantleetheme
-Version:	26.04.3
+Version:	26.08.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -30,7 +30,7 @@ BuildRequires: cmake(Qt6Test)
 BuildRequires: cmake(Qt6Qml)
 BuildRequires: sasl-devel
 BuildRequires: cmake(KPim6AkonadiSearch)
-BuildRequires: cmake(KPim6Mime)
+BuildRequires: cmake(KF6Mime)
 BuildRequires: cmake(KF6NewStuff)
 BuildRequires: cmake(KF6IconThemes)
 BuildRequires: cmake(KF6TextTemplate)
